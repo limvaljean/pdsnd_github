@@ -18,7 +18,8 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-        city = input('Enter the name of city: ').lower()
+        city = input('Enter the name of city: ')
+        city = city.lower()
         if city in CITY_DATA:
             break
         print('You entered an invalid city name')
@@ -26,7 +27,8 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
-        month = input('Enter the name of month: ').lower()
+        month = input('Enter the name of month: ')
+        month = month.lower()
         if month in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
             break
         print('You entered an invalid month name')
@@ -168,25 +170,25 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-def show_raw(df): 
+def show_raw(df):
     last_row_index = df.shape[0]
-    counter = 0 
+    counter = 0
     while True:
         answer = input('Would you like to see five more lines of raw data?: ')
-        if answer.lower() == 'yes': 
+        if answer.lower() == 'yes':
             if counter >= len(df):
                 print('You have seen everything now. Existing....')
                 break
             print(df.iloc[counter:counter+5,:])
             counter += 5
-        elif answer.lower() == 'no': 
+        elif answer.lower() == 'no':
             print('OK, have it your way')
             break
-        else: 
+        else:
             print('Invalid request. Say yes or no')
             continue
-        
-        
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -205,4 +207,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
